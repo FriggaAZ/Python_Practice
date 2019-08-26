@@ -1,7 +1,7 @@
 import socket
 import re
 import multiprocessing
-# import time
+import time
 import mini_frame
 
 
@@ -58,14 +58,14 @@ class WSGIServer(object):
             # 以.py结尾，那么就认为是动态资源的请求
             header = "http/1.1 200 OK\r\n"
             header += "\r\n"
-            body = "hahahahah %s " % time.ctime()
-            if file_name == "/login.py":
-                body = mini_frame.login()
-            elif file_name == "/register.py":
-                body = mini_frame.register()
-            # body = mini_frame.application(file_name)
-            response = header+body
-
+            # body = "hahahahah %s " % time.ctime()
+            # if file_name == "/login.py":
+            #     body = mini_frame.login()
+            # elif file_name == "/register.py":
+            #     body = mini_frame.register()
+            # response = header+body
+            body = mini_frame.application(file_name)
+            response = header + body 
             new_client.send(response.encode("utf-8"))
 
         new_client.close()
