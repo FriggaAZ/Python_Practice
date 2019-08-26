@@ -1,0 +1,3 @@
+- 运行方式： ./run.sh
+- or: python3 web_server.py [port] [frame_name]:[application]
+- 例如：python web_server.py 9090 mini_frame:application
